@@ -1,0 +1,15 @@
+/* Copyright (c) Microsoft Corporation.
+Licensed under the MIT License. */
+
+
+iframe {
+  border: none;
+ 
+}
+
+
+
+.report-container {
+  margin: 8px auto;
+  width: 90%;
+}

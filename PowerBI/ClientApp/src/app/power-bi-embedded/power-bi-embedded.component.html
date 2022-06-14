@@ -1,0 +1,27 @@
+<!-- Copyright (c) Microsoft Corporation.
+Licensed under the MIT License. -->
+
+
+  <h1>Power BI Embedded - Angular Demo</h1>
+ 
+<div class="controls" *ngIf="isEmbedded; else embedReportFlow">
+  <!--<button (click)="deleteVisual()">Delete Visual</button>-->
+  <button type="button" class="btn btn-primary" (click)="hideFilterPane()">{{ filterPanelShown == true ? 'Hide Filter Pane' : 'Show Filter Pane'}}</button>
+  <button type="button" class="btn btn-secondary" (click)="setDataSelectedEvent()">Set Event</button>
+  <div class="display-message" #status>{{ displayMessage }}</div>
+</div>
+<ng-template #embedReportFlow>
+  <div class="display-message position" #status>
+    <label>{{ displayMessage }}</label>
+  </div>
+  <div class="embed-report d-grid gap-2">
+    <!-- <button type="button" class="btn btn-primary" (click)="embedReport()" id="embed-action" #embedReportBtn>Embed Report</button> -->
+    <button type="button" class="btn btn-primary" (click)="embedReport(rpt.reportId)" id="rpt.reportId" *ngFor="let rpt of reportList">{{ rpt.reportName }}</button>
+  </div>
+  <div class="separator"></div>
+</ng-template>
+<div class="row">
+  <!-- <powerbi-report [embedConfig]="reportConfig" [cssClassName]="reportClass" [phasedEmbedding]="phasedEmbeddingFlag" [eventHandlers]="eventHandlersMap">
+  </powerbi-report> -->
+  <powerbi-paginated-report [embedConfig]="paginatedReportConfig" [cssClassName]="reportClass"></powerbi-paginated-report>
+</div>
